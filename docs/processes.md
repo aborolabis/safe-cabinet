@@ -19,7 +19,8 @@ This document describes the most important processes related to:
 This document does not describe implementation details or technical architecture.
 
 ## 3. Main Actors
-image.png
+
+<img src="pics/user.png" alt="user card" />
 
 ### User
 The general system user. Depending on the context, they may act as:
@@ -27,14 +28,20 @@ The general system user. Depending on the context, they may act as:
 - a caregiver,
 - a patient managing their own medicines.
 
+<img src="pics/admin.png" alt="admin card" />
+
 ### Administrator
 A person managing one or more care spaces. They may act as:
 - the owner of a care space,
 - a caregiver,
 - a user managing their own medicine cabinet.
 
+<img src="pics/dependent.png" alt="dependent card" />
+
 ### Dependent
 A person whose medicines are stored, monitored, or administered within a given care space.
+
+<img src="pics/caregiver.png" alt="caregiver card" />
 
 ### Caregiver
 A family member or another person with limited access to a selected care space.
@@ -43,7 +50,7 @@ A family member or another person with limited access to a selected care space.
 
 ### Process 1: Account Registration and Login
 
-image.png
+<img src="pics/registration-login.png" alt="registration and login event storming" />
 
 #### Goal
 To allow the user to create an account and gain access to the application.
@@ -68,7 +75,8 @@ In later iterations, the registration and login flow may be extended with:
 
 ### Process 2: Creating a Care Space
 
-image.png
+<img src="pics/create-care-space.png" alt="registration and login event storming" />
+
 
 #### Goal
 To allow the user to create a separate context for medicines and dependents.
