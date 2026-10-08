@@ -107,7 +107,7 @@ In later iterations, a care space may support additional configuration options, 
 - archiving or closing a care space,
 - reference attachments such as documents or package photos.
 
-### 6. Process 3: Adding a Care Profile
+### Process 3: Adding a Care Profile
 
 <img src="pics/add-care-profile.png" alt="add care profile process" />
 
@@ -149,7 +149,7 @@ Later iterations may support:
 
 The allergy list and its data source require further investigation. Users should be able to indicate that allergy information is unknown or has not been provided; these states must not be treated as "no known allergies".
 
-### 8. Process 4: Adding a Medicine to a Care Space
+### Process 4: Adding a Medicine to a Care Space
 
 <img src="pics/add-medicine.png" alt="add medicine process" />
 
@@ -182,3 +182,36 @@ The selected reference product is available in the care space, and its physical 
 
 #### Future Direction
 In later iterations, the user may be able to scan an GTIN or QR code on the package to identify the product and prefill available package information. The user will review and confirm the information before it is saved. Scanning may not provide all the details required to register a package, so manual entry may still be needed.
+
+
+### Process 5: Assigning a Medicine to a Care Profile
+
+<img src="pics/assign-medicine.png" alt="assign medicine process" />
+
+#### Goal
+To assign a medicinal product from the selected care space's medicine cabinet to a care profile and create a basic dosing schedule.
+
+#### Preconditions
+- The user is logged in and has access to the care space.
+- The care space contains at least one medicinal product.
+- A care profile exists in the selected care space.
+
+#### Process Description
+1. The user opens a care space and selects a care profile.
+2. The user selects the option to add a medicine.
+3. The user selects a medicinal product from the care space's medicine cabinet.
+4. The user enters the dosing instructions:
+    - quantity per dose,
+    - frequency or interval,
+    - administration times, if applicable.
+5. The user submits the dosing instructions.
+6. The system validates the information and creates a medication plan for the selected care profile.
+7. The system displays the planned doses in the care profile's schedule.
+
+The medication plan is associated with the medicinal product, not with a specific physical package. Creating a plan does not reduce the cabinet stock.
+
+#### Result
+The medicinal product has an active basic dosing plan for the selected care profile, and its planned doses are visible in the schedule.
+
+#### Future Direction
+Later iterations may support more complex dosing patterns, such as treatment periods followed by breaks, repeated cycles or user-entered conditional instructions. The application will record the instructions provided by the user, but it will not recommend or calculate treatment changes.
