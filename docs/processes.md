@@ -50,7 +50,7 @@ A family member or another person with limited access to a selected care space.
 
 ### Process 1: Account Registration and Login
 
-<img src="pics/registration-login.png" alt="registration and login event storming" />
+<img src="pics/registration-login.png" alt="registration and login process" />
 
 #### Goal
 To allow the user to create an account and gain access to the application.
@@ -75,7 +75,7 @@ In later iterations, the registration and login flow may be extended with:
 
 ### Process 2: Creating a Care Space
 
-<img src="pics/create-care-space.png" alt="registration and login event storming" />
+<img src="pics/create-care-space.png" alt="create a care space process" />
 
 
 #### Goal
@@ -106,3 +106,45 @@ In later iterations, a care space may support additional configuration options, 
 - notes or goals describing the context of the space,
 - archiving or closing a care space,
 - reference attachments such as documents or package photos.
+
+## 6. Process 3: Adding a Care Profile
+
+<img src="pics/add-care-profile.png" alt="add care profile process" />
+
+### Goal
+To create a profile for a person whose medicines and schedules will be managed within a care space.
+
+### Preconditions
+- The user is logged in.
+- The user has access to the selected care space.
+
+### Process Description
+1. The user opens a care space.
+2. The user selects the option to add a care profile.
+3. The user chooses whether to add another person or themselves.
+4. The system displays a form appropriate to the selected option.
+
+#### Adding another person
+5. The user enters a display name, for example - "Grandma Bozena".
+6. The user may enter the person's date of birth or specifies allergy information, if known.
+
+#### Adding the user
+5. The system creates a profile for the user within the selected care space.
+6. The user may enter their date of birth and specify allergy information, if known.
+
+#### Main process
+7. The system validates the submitted information.
+8. The system creates the care profile and associates it with the selected care space.
+
+Allergy information is user-provided and informational. It is not independently verified by the application and does not constitute medical advice.
+
+### Result
+The care profile is available in the selected care space and can be associated with medicines and schedules.
+
+### Future Direction
+Later iterations may support:
+- a profile photo or avatar,
+- additional profile details where needed,
+- a searchable allergy reference list.
+
+The allergy list and its data source require further investigation. Users should be able to indicate that allergy information is unknown or has not been provided; these states must not be treated as "no known allergies".
