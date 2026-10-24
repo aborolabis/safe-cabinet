@@ -215,3 +215,64 @@ The medicinal product has an active basic dosing plan for the selected care prof
 
 #### Future Direction
 Later iterations may support more complex dosing patterns, such as treatment periods followed by breaks, repeated cycles or user-entered conditional instructions. The application will record the instructions provided by the user, but it will not recommend or calculate treatment changes.
+
+### 10. Process 6: Recording a Medicine Administration
+
+<img src="pics/record-administration.png" alt="record a medicine administration" />
+
+#### Goal
+To record what happened with a planned or unplanned dose of a medicine and, when the dose was administered, update the stock of the related package.
+
+#### Preconditions
+- The user is logged in and has access to the care space.
+- A care profile exists in the care space.
+- The care space's medicine cabinet contains at least one medicine.
+- For planned doses, the medicine is assigned to the care profile with a dosing plan and the daily schedule is displayed.
+
+#### Entry Points
+- A planned dose selected for a care profile in the daily timetable. All sub-processes 6a-6d are available.
+- A medicine from the care space's cabinet selected for a care profile as an unplanned dose. It does not need to be assigned to the care profile with a dosing plan. Only sub-process 6d is available.
+
+#### Sub-process 6a: Quick Administration
+1. The user marks a planned dose as administered.
+2. The system selects the valid (non-expired) package of the product with the earliest expiry date.
+3. The system records the administration with the planned quantity and the current time.
+4. The system deducts the quantity from the selected package.
+
+#### Sub-process 6b: Skipping a Dose
+1. The user marks a planned dose as skipped.
+2. The system records the event in the care profile's history.
+3. The package stock is not changed.
+
+#### Sub-process 6c: Refusal of a Dose
+1. The user marks a planned dose as refused by the person.
+2. The system records the event in the care profile's history.
+3. The package stock is not changed.
+
+#### Sub-process 6d: Extended Recording
+1. The user opens the extended form for a planned dose, or for an unplanned medicine selected for a care profile.
+2. The user selects the outcome: administered, skipped, or refused. For an unplanned medicine, the outcome is always administered.
+3. For an administered dose, the user enters or may change:
+    - the package to use (selected automatically by default),
+    - the quantity (required for an unplanned dose; for a planned dose, the planned quantity by default),
+    - the time of administration (the current time by default),
+    - a note about special circumstances, e.g. "temperature 38 C - dose increased to 10 ml".
+4. For a skipped or refused dose, the user may only add a note. Quantity and package are not recorded.
+5. The user submits the form.
+6. The system validates the data and records the event.
+7. For an administered dose, the system deducts the actual quantity from the selected package.
+
+#### Rules
+- Refused and skipped doses do not change stock.
+- An expired package is not selected automatically.
+- The application records information provided by the user. It does not suggest or adjust doses.
+- Planned and unplanned doses are recorded in the same history, with a reference to the planned dose when one exists.
+
+#### Result
+The event appears in the care profile's history and the daily schedule. For administered doses, the package quantity is reduced.
+
+#### Future Direction
+- Editing or reverting a recorded event with stock recalculation.
+- Handling insufficient stock or no valid package.
+- Alerts for missed doses and low stock.
+
