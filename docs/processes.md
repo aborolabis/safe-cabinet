@@ -276,3 +276,55 @@ The event appears in the care profile's history and the daily schedule. For admi
 - Handling insufficient stock or no valid package.
 - Alerts for missed doses and low stock.
 
+### 11. Process 7: Accessing Medicine Information
+
+<img src="pics/access-medicine-info.png" alt="access medicine information graph" />
+
+#### Goal
+To allow the user to search for medical products, access official product information and documents, and check stock across accessible care spaces.
+
+#### Preconditions
+- The user is logged in.
+- Product reference data is available in the catalog.
+- Access to cabinet stock requires permission to view inventory in the relevant care spaces.
+
+#### Process Description
+1. The user opens the medicine catalog.
+2. The system displays search criteria above a results table. 
+3. The user enters search criteria and submits the search.
+4. The system displays matching medicinal products.
+5. The user selects an action for a product:
+    - view product details, 
+    - open the patient information leaflet, 
+    - open the Charakterystyka Produktu Leczniczego (ChPL),
+    - check cabinet stock.
+
+##### Viewing Product Details
+1. The system opens a product details view with information sourced from the Register of Medicinal Products.
+2. The system identifies the data source and the date of the last successful synchronization.
+
+##### Accessing Product Documents
+1. The user selects the leaflet or ChPL.
+2. The application opens the available PDF document from the official source.
+3. If the document is unavailable or cannot be opened, the application informs the user.
+
+##### Checking Cabinet Stock
+1. The system displays physical packages of the selected product across care spaces whose inventory the user is permitted to view.
+2. The table includes the care space, package details, remaining quantity, quantity unit, expiry date, and batch number where available.
+3. If no packages are recorded in accessible care spaces, the system displays an explicit empty-state message. 
+
+#### Rules
+- A product does not need to be added to a cabinet to appear in catalog search results.
+- Product details and documents are presented as reference information, not medical advice.
+- Cabinet stock is visible only within the user's access permissions.
+- An empty stock result describes recorded inventory, not pharmacy availability. 
+- Missing documents and unavailable data sources are explicitly indicated.
+
+#### Result
+The user can access available reference information and official documents for a medicinal product and check it's recorded stock in accessible care spaces.
+
+#### Future Direction
+- Accessing product information directly from cabinet and medication plan views.
+- Additional search filters based on available reference data.
+- Displaying related official safety notices.
+
